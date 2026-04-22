@@ -1164,6 +1164,15 @@ input:focus-visible {
   background: linear-gradient(135deg, #38e2b0, #16bf8d);
 }
 
+.estimator .panel {
+  transition: box-shadow 260ms ease, transform 260ms ease;
+}
+
+.estimator .panel:focus-within {
+  box-shadow: 0 0 0 1px rgba(83, 207, 165, 0.45), 0 18px 34px rgba(2, 24, 18, 0.35);
+  transform: translateY(-1px);
+}
+
 .resultPanel .resultLabel {
   color: #9fd8c8;
 }
