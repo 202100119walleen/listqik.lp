@@ -143,6 +143,14 @@
 .heroInner {
   max-width: 1100px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 640px;
 }
 
 .eyebrow {
@@ -193,6 +201,53 @@
 .heroStats strong {
   color: #fff;
   margin-right: 0.25rem;
+}
+
+.heroAvatarCard {
+  justify-self: end;
+  width: min(500px, 100%);
+  border: none;
+  background: rgba(6, 21, 17, 0.62);
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.36);
+}
+
+.avatarKicker {
+  margin: 0;
+  color: #9debd1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.avatarVideoWrap {
+  margin-top: 0.72rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: none;
+  background: #051912;
+  aspect-ratio: 6 / 7;
+  position: relative;
+}
+
+.avatarVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  display: block;
+  background: #041712;
+  cursor: pointer;
+}
+
+.avatarCaption {
+  margin: 0.75rem 0 0;
+  color: #abd6c8;
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 .section {
@@ -855,6 +910,17 @@ input:focus-visible {
   .hero {
     border-radius: 18px;
     margin-top: 0.6rem;
+    padding-top: 4.3rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .heroInner {
+    grid-template-columns: 1fr;
+  }
+
+  .heroAvatarCard {
+    justify-self: stretch;
+    max-width: 360px;
   }
 
   .topNav {
@@ -945,8 +1011,8 @@ input:focus-visible {
 
 .hero {
   background:
-    linear-gradient(rgba(3, 13, 10, 0.82), rgba(3, 13, 10, 0.86)),
-    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=70")
+    linear-gradient(rgba(3, 13, 10, 0.76), rgba(3, 13, 10, 0.83)),
+    url("https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=1800&q=70")
       center / cover no-repeat;
 }
 
@@ -958,6 +1024,22 @@ input:focus-visible {
   background: rgba(20, 57, 48, 0.45);
   border-color: rgba(43, 125, 104, 0.55);
   color: #b5dfd2;
+}
+
+.heroAvatarCard {
+  background: rgba(4, 18, 14, 0.75);
+}
+
+.avatarKicker {
+  color: #a9f3d9;
+}
+
+.avatarVideoWrap {
+  background: #041712;
+}
+
+.avatarCaption {
+  color: #9fcfbe;
 }
 
 .sectionKicker {

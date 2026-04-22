@@ -67,18 +67,23 @@ const testimonials = [
   }
 ];
 
+const avatarSampleVideo =
+  "https://res.cloudinary.com/dowcybzve/video/upload/f_auto,q_auto,w_720/v1776868318/avatar_2_ekxnl4.mp4";
+
 function formatMoney(value) {
   return `$${Math.round(value).toLocaleString()}`;
 }
 
 export default function HomePage() {
   const carouselRef = useRef(null);
+  const avatarVideoRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [beds, setBeds] = useState(3);
   const [baths, setBaths] = useState(2);
   const [sqft, setSqft] = useState(1800);
   const [zip, setZip] = useState("");
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [avatarMuted, setAvatarMuted] = useState(true);
 
   const estimate = useMemo(() => {
     const baseline = 120000 + sqft * 205 + beds * 18000 + baths * 14000;
@@ -101,6 +106,18 @@ export default function HomePage() {
     if (!node) return;
     const distance = node.clientWidth * 0.92;
     node.scrollBy({ left: direction * distance, behavior: "smooth" });
+  };
+
+  const toggleAvatarSound = () => {
+    const video = avatarVideoRef.current;
+    if (!video) return;
+    const nextMuted = !avatarMuted;
+    video.muted = nextMuted;
+    if (!nextMuted) {
+      video.volume = 1;
+      video.play().catch(() => {});
+    }
+    setAvatarMuted(nextMuted);
   };
 
   return (
@@ -133,31 +150,52 @@ export default function HomePage() {
       <main className="pageShell">
         <section className="hero">
           <div className="heroInner reveal">
-            <p className="eyebrow">Modern real estate platform</p>
-            <h1>List smarter. Sell faster. Close with confidence.</h1>
-            <p className="heroCopy">
-              Premium listing presentation, serious buyer exposure, and local
-              experts that move quickly when timing matters.
-            </p>
-            <div className="heroActions">
-              <a href="#seller" className="btn btnPrimary">
-                Start Your Listing
-              </a>
-              <a href="#estimate" className="btn btnSecondary">
-                Check Home Value
-              </a>
+            <div className="heroContent">
+              <p className="eyebrow">Modern real estate platform</p>
+              <h1>List smarter. Sell faster. Close with confidence.</h1>
+              <p className="heroCopy">
+                Premium listing presentation, serious buyer exposure, and local
+                experts that move quickly when timing matters.
+              </p>
+              <div className="heroActions">
+                <a href="#seller" className="btn btnPrimary">
+                  Start Your Listing
+                </a>
+                <a href="#estimate" className="btn btnSecondary">
+                  Check Home Value
+                </a>
+              </div>
+              <ul className="heroStats" aria-label="Performance highlights">
+                <li>
+                  <strong>24h</strong> average response
+                </li>
+                <li>
+                  <strong>98%</strong> client satisfaction
+                </li>
+                <li>
+                  <strong>3.2x</strong> listing engagement
+                </li>
+              </ul>
             </div>
-            <ul className="heroStats" aria-label="Performance highlights">
-              <li>
-                <strong>24h</strong> average response
-              </li>
-              <li>
-                <strong>98%</strong> client satisfaction
-              </li>
-              <li>
-                <strong>3.2x</strong> listing engagement
-              </li>
-            </ul>
+
+            <aside className="heroAvatarCard" aria-label="AI assistant preview">
+              <p className="avatarKicker">AI Listing Assistant</p>
+              <div className="avatarVideoWrap">
+                <video
+                  ref={avatarVideoRef}
+                  className="avatarVideo"
+                  src={avatarSampleVideo}
+                  autoPlay
+                  loop
+                  muted={avatarMuted}
+                  playsInline
+                  preload="metadata"
+                  onClick={toggleAvatarSound}
+                  aria-label={avatarMuted ? "Tap to unmute video" : "Tap to mute video"}
+                />
+              </div>
+              
+            </aside>
           </div>
         </section>
 
