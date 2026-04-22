@@ -773,3 +773,183 @@ input:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* Concept colorway override: dark emerald cockpit theme */
+:root {
+  --navy-900: #040f0c;
+  --navy-800: #0a211b;
+  --navy-700: #103329;
+  --ink-900: #d5f5ea;
+  --ink-700: #b7e0d4;
+  --ink-500: #88b7a9;
+  --bg-soft: #020806;
+  --surface: #071712;
+  --line: #1a4338;
+  --accent: #1dd59f;
+  --accent-strong: #10b886;
+  --shadow-sm: 0 10px 22px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 54px rgba(0, 0, 0, 0.5);
+}
+
+.pageShell {
+  background:
+    radial-gradient(1200px 600px at 88% 8%, rgba(24, 197, 142, 0.12), transparent 60%),
+    radial-gradient(900px 500px at 8% 18%, rgba(29, 213, 159, 0.08), transparent 60%),
+    linear-gradient(180deg, #020806 0%, #04100d 45%, #030a08 100%);
+}
+
+.topNav {
+  border-color: #184036;
+  background: rgba(6, 19, 16, 0.86);
+}
+
+.topNav nav a {
+  color: #b5e3d5;
+}
+
+.topNav nav a:hover {
+  background: #0d2620;
+  color: #c8f3e5;
+}
+
+.brand small {
+  color: #90c7b8;
+}
+
+.btnSecondary {
+  color: #c8f3e5;
+  background: #0e2721;
+  border: 1px solid #1d4b40;
+}
+
+.hero {
+  background:
+    linear-gradient(rgba(3, 13, 10, 0.82), rgba(3, 13, 10, 0.86)),
+    url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=70")
+      center / cover no-repeat;
+}
+
+.heroCopy {
+  color: rgba(209, 245, 232, 0.85);
+}
+
+.heroStats li {
+  background: rgba(20, 57, 48, 0.45);
+  border-color: rgba(43, 125, 104, 0.55);
+  color: #b5dfd2;
+}
+
+.sectionKicker {
+  background: #0d2d24;
+  color: #9be8cf;
+}
+
+.metrics article,
+.card,
+.trustGrid article,
+.panel,
+.compareTableWrap,
+.sectionAlt {
+  background: #061310;
+  border-color: #174035;
+}
+
+.sectionAlt {
+  box-shadow: none;
+}
+
+.sectionHeading h2,
+.price,
+.sellerCta h2,
+.compareTable thead th,
+.trustGrid h3 {
+  color: #d0f5e8;
+}
+
+.sectionHeading p,
+.address,
+.meta,
+.sliderCount,
+.trustGrid p,
+.sellerCta p,
+.marketDays {
+  color: #87b5a7;
+}
+
+.iconBtn {
+  border-color: #235247;
+  color: #b8e7d8;
+  background: #0b231d;
+}
+
+.iconBtn:hover {
+  background: #1dd59f;
+  color: #032d21;
+}
+
+.inlineLink {
+  color: #8be8cb;
+}
+
+.marketDays {
+  border-color: #1d4c40;
+  background: #0a1f19;
+}
+
+.listingBadge {
+  background: rgba(15, 184, 134, 0.93);
+}
+
+.compareTable thead th {
+  background: #0b1d18;
+}
+
+.compareTable th,
+.compareTable td {
+  border-color: #174035;
+  color: #a9d9ca;
+}
+
+.bestCol {
+  background: #0c231d;
+  color: #9ef4d8;
+}
+
+.bestBadge {
+  background: #1dd59f;
+  color: #073726;
+}
+
+.testimonial {
+  background: linear-gradient(180deg, #0a2019, #091912);
+  border-color: #1f4c40;
+}
+
+.testimonial p {
+  color: #c5f0e2;
+}
+
+.testimonial footer {
+  color: #9ecfbe;
+}
+
+.sellerCta {
+  background: linear-gradient(145deg, #061612, #081d18);
+  border-color: #1a4338;
+}
+
+.siteFooter {
+  background: linear-gradient(180deg, #071511 0%, #040d0b 100%);
+}
+
+.footerGrid a,
+.footerGrid span,
+.footerBottom p,
+.footerLegal a {
+  color: #9fcdbf;
+}
+
+.footerGrid a:hover,
+.footerLegal a:hover {
+  color: #d9fff2;
+}
