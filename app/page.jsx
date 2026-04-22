@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 const listings = [
   {
@@ -10,7 +10,9 @@ const listings = [
       "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=75",
     price: "$489,000",
     address: "4812 Maple Grove Dr, Dallas, TX",
-    meta: "4 bd • 3 ba • 2,450 sqft"
+    meta: "4 bd • 3 ba • 2,450 sqft",
+    badge: "New",
+    daysOnMarket: "5d on market"
   },
   {
     id: 2,
@@ -18,7 +20,9 @@ const listings = [
       "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=75",
     price: "$712,500",
     address: "1890 Lakeside Blvd, Austin, TX",
-    meta: "5 bd • 4 ba • 3,210 sqft"
+    meta: "5 bd • 4 ba • 3,210 sqft",
+    badge: "Hot",
+    daysOnMarket: "3d on market"
   },
   {
     id: 3,
@@ -26,7 +30,9 @@ const listings = [
       "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?auto=format&fit=crop&w=900&q=75",
     price: "$329,000",
     address: "678 Pine Ridge Ct, Houston, TX",
-    meta: "3 bd • 2 ba • 1,820 sqft"
+    meta: "3 bd • 2 ba • 1,820 sqft",
+    badge: "Price Drop",
+    daysOnMarket: "21d on market"
   },
   {
     id: 4,
@@ -34,7 +40,9 @@ const listings = [
       "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=75",
     price: "$1,250,000",
     address: "250 Ocean Vista Pkwy, Miami, FL",
-    meta: "5 bd • 5 ba • 4,100 sqft"
+    meta: "5 bd • 5 ba • 4,100 sqft",
+    badge: "Luxury",
+    daysOnMarket: "7d on market"
   }
 ];
 
@@ -66,27 +74,11 @@ function formatMoney(value) {
 export default function HomePage() {
   const carouselRef = useRef(null);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [loadedImages, setLoadedImages] = useState({});
   const [beds, setBeds] = useState(3);
   const [baths, setBaths] = useState(2);
   const [sqft, setSqft] = useState(1800);
   const [zip, setZip] = useState("");
   const [testimonialIndex, setTestimonialIndex] = useState(0);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    const elements = document.querySelectorAll(".reveal");
-    elements.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
 
   const estimate = useMemo(() => {
     const baseline = 120000 + sqft * 205 + beds * 18000 + baths * 14000;
@@ -125,6 +117,7 @@ export default function HomePage() {
         <nav aria-label="Primary navigation">
           <a href="#listings">Listings</a>
           <a href="#estimate">Home Value</a>
+          <a href="#compare">Compare</a>
           <a href="#trust">Why Us</a>
         </nav>
         <div className="navActions">
@@ -185,7 +178,8 @@ export default function HomePage() {
 
         <section id="listings" className="section listings reveal sectionAlt">
           <div className="sectionHeading">
-            <h2>Featured Properties</h2>
+            <p className="sectionKicker">Featured Properties</p>
+            <h2>Homes You&apos;ll Love</h2>
             <p>Browse active homes with a manual, touch-friendly carousel.</p>
           </div>
           <div className="carouselControls" aria-label="Listing carousel controls">
@@ -204,25 +198,28 @@ export default function HomePage() {
           >
             {listings.map((listing) => (
               <article className="card" key={listing.id}>
-                <div className={`media ${loadedImages[listing.id] ? "isLoaded" : ""}`}>
+                <div className="media">
+                  <span className="listingBadge">{listing.badge}</span>
                   <Image
                     src={listing.image}
                     alt={listing.address}
                     fill
                     sizes="(max-width: 900px) 76vw, 32vw"
                     className="listingImage"
-                    onLoad={() =>
-                      setLoadedImages((prev) => ({ ...prev, [listing.id]: true }))
-                    }
+                    quality={72}
+                    priority={listing.id === 1}
                   />
                 </div>
                 <div className="cardBody">
                   <p className="price">{listing.price}</p>
                   <p className="address">{listing.address}</p>
                   <p className="meta">{listing.meta}</p>
-                  <a href="#seller" className="inlineLink">
-                    Request details
-                  </a>
+                  <div className="cardFooterRow">
+                    <a href="#seller" className="inlineLink">
+                      View Details
+                    </a>
+                    <span className="marketDays">{listing.daysOnMarket}</span>
+                  </div>
                 </div>
               </article>
             ))}
@@ -230,6 +227,63 @@ export default function HomePage() {
           <p className="sliderCount">
             {activeSlide + 1} / {listings.length}
           </p>
+        </section>
+
+        <section id="compare" className="section compare reveal">
+          <div className="sectionHeading">
+            <p className="sectionKicker">Why ListQik</p>
+            <h2>See How We Compare</h2>
+            <p>
+              More value, stronger exposure, and a cleaner seller experience
+              than traditional listing paths.
+            </p>
+          </div>
+          <div className="compareTableWrap">
+            <table className="compareTable">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th className="bestCol">
+                    <span className="bestBadge">Best Value</span>
+                    ListQik
+                  </th>
+                  <th>Other Flat Fee Companies</th>
+                  <th>FSBO (Solo)</th>
+                  <th>Traditional Agent</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Listing Cost</td>
+                  <td className="bestCol">✓ Flat, transparent pricing</td>
+                  <td>Upfront + variable closing fees</td>
+                  <td>Low upfront, high effort</td>
+                  <td>2.5%-3% commission</td>
+                </tr>
+                <tr>
+                  <td>MLS Exposure</td>
+                  <td className="bestCol">✓ Included nationwide syndication</td>
+                  <td>Often limited by package tier</td>
+                  <td>✕ No direct MLS access</td>
+                  <td>Included</td>
+                </tr>
+                <tr>
+                  <td>Lead Management</td>
+                  <td className="bestCol">✓ Built-in lead funnel + support</td>
+                  <td>Usually self-managed</td>
+                  <td>Fully self-managed</td>
+                  <td>Agent-managed</td>
+                </tr>
+                <tr>
+                  <td>Speed to Launch</td>
+                  <td className="bestCol">✓ Fast onboarding workflow</td>
+                  <td>Medium</td>
+                  <td>Slow setup</td>
+                  <td>Depends on agent schedule</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section id="estimate" className="section estimator reveal">

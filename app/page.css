@@ -147,7 +147,7 @@
 }
 
 .hero h1 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-playfair), serif;
   font-size: clamp(2rem, 5.8vw, 3.8rem);
   line-height: 1.08;
   max-width: 14ch;
@@ -192,6 +192,8 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 4.4rem 1rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
 }
 
 .sectionAlt {
@@ -202,9 +204,22 @@
 }
 
 .sectionHeading h2 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-playfair), serif;
   color: #132952;
   font-size: clamp(1.6rem, 4vw, 2.4rem);
+}
+
+.sectionKicker {
+  display: inline-flex;
+  margin: 0 0 0.7rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  background: #e4f5ee;
+  color: #0c7f57;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
 }
 
 .sectionHeading p {
@@ -300,23 +315,32 @@
 .media {
   position: relative;
   height: 220px;
-  background: linear-gradient(90deg, #e9edf5, #f4f6fa, #e9edf5);
-  background-size: 240% 100%;
-  animation: shimmer 1.4s linear infinite;
+  background: #e9eef6;
+}
+
+.listingBadge {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 2;
+  border-radius: 999px;
+  padding: 0.3rem 0.55rem;
+  background: rgba(11, 111, 75, 0.92);
+  color: #fff;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
 }
 
 .listingImage {
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 220ms ease;
-}
-
-.media.isLoaded {
-  animation: none;
-}
-
-.media.isLoaded img {
   opacity: 1;
+  transition: transform 320ms ease;
+}
+
+.card:hover .listingImage {
+  transform: scale(1.03);
 }
 
 .cardBody {
@@ -342,10 +366,90 @@
   font-weight: 700;
 }
 
+.cardFooterRow {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.marketDays {
+  border: 1px solid #d7e2f0;
+  border-radius: 999px;
+  padding: 0.2rem 0.5rem;
+  color: var(--ink-500);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
 .sliderCount {
   margin-top: 0.7rem;
   color: var(--ink-500);
   font-size: 0.88rem;
+}
+
+.compare {
+  margin-top: 1.4rem;
+}
+
+.compareTableWrap {
+  margin-top: 1rem;
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid #dbe5f2;
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.compareTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 880px;
+}
+
+.compareTable th,
+.compareTable td {
+  padding: 0.95rem;
+  text-align: left;
+  border-bottom: 1px solid #e7edf7;
+  border-right: 1px solid #e7edf7;
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+
+.compareTable tr:last-child td {
+  border-bottom: none;
+}
+
+.compareTable th:last-child,
+.compareTable td:last-child {
+  border-right: none;
+}
+
+.compareTable thead th {
+  background: #f3f7fc;
+  color: var(--ink-900);
+  font-weight: 700;
+}
+
+.bestCol {
+  background: #f1fbf6;
+  color: #0f5f43;
+  font-weight: 600;
+}
+
+.bestBadge {
+  display: inline-flex;
+  margin-right: 0.45rem;
+  border-radius: 999px;
+  background: #0f8a5f;
+  color: #fff;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.45rem;
+  vertical-align: middle;
 }
 
 .estimatorGrid {
@@ -589,23 +693,13 @@ input:focus-visible {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: transform 420ms ease, opacity 420ms ease;
+  opacity: 1;
+  transform: none;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
 }
 
 @media (max-width: 900px) {
