@@ -445,7 +445,7 @@ export default function HomePage() {
         <div className="footerBottom">
           <p>
             © {new Date().getFullYear()} ListQik · Resolution Realty Group. All
-            rights reserved.
+            rights reserved..
           </p>
           <div className="footerLegal">
             <a href="#">Privacy</a>
