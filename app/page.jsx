@@ -229,60 +229,77 @@ export default function HomePage() {
           </p>
         </section>
 
-        <section id="compare" className="section compare reveal">
+        <section id="compare" className="section pricing reveal">
           <div className="sectionHeading">
-            <p className="sectionKicker">Why ListQik</p>
-            <h2>See How We Compare</h2>
+            <p className="sectionKicker">Pricing Plans</p>
+            <h2>Choose How You Want to Sell</h2>
             <p>
-              More value, stronger exposure, and a cleaner seller experience
-              than traditional listing paths.
+              No hidden fees, no long contracts, just the tools and brokerage
+              support you need to keep more equity.
             </p>
           </div>
-          <div className="compareTableWrap">
-            <table className="compareTable">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th className="bestCol">
-                    <span className="bestBadge">Best Value</span>
-                    ListQik
-                  </th>
-                  <th>Other Flat Fee Companies</th>
-                  <th>FSBO (Solo)</th>
-                  <th>Traditional Agent</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Listing Cost</td>
-                  <td className="bestCol">✓ Flat, transparent pricing</td>
-                  <td>Upfront + variable closing fees</td>
-                  <td>Low upfront, high effort</td>
-                  <td>2.5%-3% commission</td>
-                </tr>
-                <tr>
-                  <td>MLS Exposure</td>
-                  <td className="bestCol">✓ Included nationwide syndication</td>
-                  <td>Often limited by package tier</td>
-                  <td>✕ No direct MLS access</td>
-                  <td>Included</td>
-                </tr>
-                <tr>
-                  <td>Lead Management</td>
-                  <td className="bestCol">✓ Built-in lead funnel + support</td>
-                  <td>Usually self-managed</td>
-                  <td>Fully self-managed</td>
-                  <td>Agent-managed</td>
-                </tr>
-                <tr>
-                  <td>Speed to Launch</td>
-                  <td className="bestCol">✓ Fast onboarding workflow</td>
-                  <td>Medium</td>
-                  <td>Slow setup</td>
-                  <td>Depends on agent schedule</td>
-                </tr>
-              </tbody>
-            </table>
+          <p className="pricingHighlight">
+            Homeowners save an average of $11,785 versus traditional listing
+            paths.
+          </p>
+
+          <div className="pricingGrid">
+            <article className="pricingCard isPopular">
+              <p className="planBadge">Most Popular</p>
+              <h3>Essentials</h3>
+              <p className="planCopy">
+                Everything you need to list on the MLS and sell on your terms.
+              </p>
+              <p className="planPrice">$95</p>
+              <p className="planSub">One-time listing fee</p>
+              <a href="#seller" className="btn btnPrimary wide">
+                List My Home - $95
+              </a>
+              <ul>
+                <li>Listed on MLS and major portals</li>
+                <li>All required listing paperwork support</li>
+                <li>Unlimited listing changes</li>
+                <li>Showing and inquiry forwarding</li>
+              </ul>
+            </article>
+
+            <article className="pricingCard">
+              <p className="planBadge isDark">Pro Marketing</p>
+              <h3>Advanced</h3>
+              <p className="planCopy">
+                Stand out with premium media and stronger listing visibility.
+              </p>
+              <p className="planPrice">$495</p>
+              <p className="planSub">One-time listing fee</p>
+              <a href="#seller" className="btn btnSecondary wide">
+                Upgrade My Marketing
+              </a>
+              <ul>
+                <li>Everything in Essentials</li>
+                <li>Professional photography package</li>
+                <li>Priority listing optimization</li>
+                <li>Enhanced social ad placement</li>
+              </ul>
+            </article>
+
+            <article className="pricingCard">
+              <p className="planBadge isDark">Best Value</p>
+              <h3>Full Service</h3>
+              <p className="planCopy">
+                Licensed agent support from listing to negotiation and close.
+              </p>
+              <p className="planPrice">1%</p>
+              <p className="planSub">At settlement</p>
+              <a href="#seller" className="btn btnSecondary wide">
+                Talk to an Agent
+              </a>
+              <ul>
+                <li>Dedicated licensed agent</li>
+                <li>Offer review and negotiation help</li>
+                <li>Buyer screening and qualification</li>
+                <li>Pricing strategy to maximize sale value</li>
+              </ul>
+            </article>
           </div>
         </section>
 
