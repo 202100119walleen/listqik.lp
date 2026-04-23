@@ -8,6 +8,7 @@ const avatarSampleVideo =
 export default function HomePage() {
   const avatarVideoRef = useRef(null);
   const [avatarMuted, setAvatarMuted] = useState(true);
+  const [navOpen, setNavOpen] = useState(false);
 
   const toggleAvatarSound = () => {
     const video = avatarVideoRef.current;
@@ -29,11 +30,22 @@ export default function HomePage() {
           <span className="brandMark">LQ</span>
           <span>ListQik</span>
         </a>
-        <nav aria-label="Primary navigation">
-          <a href="#compare">Pricing</a>
-          <a href="#seller">Sell</a>
-          <a href="#compare">Compare</a>
-          <a href="#seller">Start</a>
+        <button
+          type="button"
+          className="navToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded={navOpen}
+          onClick={() => setNavOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav aria-label="Primary navigation" className={navOpen ? "open" : ""}>
+          <a href="#compare" onClick={() => setNavOpen(false)}>Pricing</a>
+          <a href="#seller" onClick={() => setNavOpen(false)}>Sell</a>
+          <a href="#compare" onClick={() => setNavOpen(false)}>Compare</a>
+          <a href="#seller" onClick={() => setNavOpen(false)}>Start</a>
         </nav>
         <div className="navActions">
           <a href="#compare" className="btn btnSecondary">
