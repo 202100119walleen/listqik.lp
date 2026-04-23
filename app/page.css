@@ -69,20 +69,27 @@
 
 .topNav nav {
   display: inline-flex;
-  gap: 1rem;
+  gap: 0.35rem;
+  padding: 0.22rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .topNav nav a {
   color: var(--ink-700);
-  font-weight: 500;
-  font-size: 0.94rem;
-  padding: 0.4rem 0.5rem;
-  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  padding: 0.48rem 0.8rem;
+  border-radius: 999px;
+  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
 
 .topNav nav a:hover {
   background: #edf3fb;
   color: var(--navy-800);
+  box-shadow: inset 0 0 0 1px rgba(11, 90, 66, 0.12);
 }
 
 .navActions {
@@ -203,6 +210,15 @@
   margin-right: 0.25rem;
 }
 
+.heroStatHighlight {
+  font-size: 0.94rem;
+  padding: 0.5rem 0.95rem;
+}
+
+.heroStatHighlight strong {
+  font-size: 1.05rem;
+}
+
 .heroAvatarCard {
   justify-self: end;
   width: min(500px, 100%);
@@ -295,7 +311,8 @@
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(220px, 320px);
+  justify-content: center;
   gap: 0.8rem;
   position: relative;
   z-index: 2;
@@ -470,7 +487,7 @@
 .pricingGrid {
   margin-top: 1.2rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
@@ -906,6 +923,12 @@ input:focus-visible {
   }
 }
 
+@media (max-width: 1200px) and (min-width: 901px) {
+  .pricingGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
     border-radius: 18px;
@@ -997,6 +1020,11 @@ input:focus-visible {
 .topNav nav a:hover {
   background: #0d2620;
   color: #c8f3e5;
+}
+
+.topNav nav {
+  background: rgba(2, 23, 18, 0.72);
+  border-color: rgba(41, 107, 89, 0.5);
 }
 
 .brand small {

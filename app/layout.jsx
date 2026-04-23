@@ -14,9 +14,9 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata = {
-  title: "ListQik · by Resolution Realty Group",
+  title: "ListQik | Independent Marketing Platform",
   description:
-    "ListQik by Resolution Realty Group – Know your home value, list faster, and sell smarter with our AI-powered real estate marketplace."
+    "ListQik is an independent real estate marketing platform. List faster, market smarter, and close with confidence."
 };
 
 export default function RootLayout({ children }) {
